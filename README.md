@@ -8,7 +8,7 @@ The steps are:
 
 - Download dependencies
   - Install [yt-dlp](https://github.com/yt-dlp/yt-dlp) to download your song (if you have your song skip this step)
-  - Install [demucs](https://github.com/facebookresearch/demucs/) and [ffmpeg](https://ffmpeg.org/) 
+  - Install [demucs](https://github.com/facebookresearch/demucs/) and [ffmpeg](https://ffmpeg.org/)
 - Download your song with yt-dlp
 - Separate the track with demucs
 - Join the drums/bass/other tracks with ffmpeg into a track that you can use as your backing track!
@@ -34,7 +34,7 @@ yt-dlp -x --audio-format mp3 "https://www.youtube.com/watch?v=pG7IS0lFPt4"
 Deleting original file Amarte Sin Amarte-pG7IS0lFPt4.webm (pass -k to keep)
 ```
 
-Next let's use demucs to separate the track into different instrument tracks, 
+Next let's use demucs to separate the track into different instrument tracks,
 I didn't have to play with flags for it to work perfectly.
 
 ```
@@ -57,8 +57,17 @@ ffmpeg -i bass.wav -i drums.wav -filter_complex amix=inputs=2:normalize=0 combin
 ```
 
 Finally let's convert again to mp3 for the open mic
+
 ```
 ffmpeg -i combined.wav -vn -ar 44100 -ac 2 -b:a 192k amarte-sin-amarte--bass-drums.mp3
+```
+
+### Capturing more instruments in the output
+
+Creates 6 instruments: bass, drums, other, piano, guitar, vocals.
+
+```
+demucs -n htdemucs_6s --mp3 -j 2 <input-file>
 ```
 
 ## Known issues
