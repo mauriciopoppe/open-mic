@@ -2,7 +2,7 @@
 
 If you want a UI, check out https://github.com/stemrollerapp/stemroller.
 
-## Summary
+## Setup
 
 The steps are:
 
@@ -13,6 +13,8 @@ The steps are:
 - Separate the track with demucs
 - Join the drums/bass/other tracks with ffmpeg into a track that you can use as your backing track!
 
+## Requirements
+
 Download dependencies
 
 ```
@@ -21,7 +23,15 @@ source venv/bin/activate
 python3 -m pip install -r requirements.txt
 ```
 
-For example I'll create a backing track with drums/bass for the song
+## Automated track split
+
+```
+./split-track.sh -v "https://www.youtube.com/watch?v=5pVCI6cqdqk"
+```
+
+### Explanation
+
+I'll create a backing track with drums/bass for the song
 [Amarte sin Amarte by Jr](https://www.youtube.com/watch?v=pG7IS0lFPt4), first let's download the song:
 
 ```
