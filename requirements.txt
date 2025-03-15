@@ -38,4 +38,4 @@ treetable==0.2.5
 typing_extensions==4.11.0
 urllib3==2.2.1
 websockets==12.0
-yt-dlp==2024.4.9
+yt-dlp==2025.02.19

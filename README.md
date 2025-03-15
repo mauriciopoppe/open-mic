@@ -13,3 +13,9 @@ about how to create a backing track.
 Please also read `split-track.sh` for an automated script that runs the
 two commands run in the article above.
 
+## Known errors
+
+### `ERROR: unable to download video data: HTTP Error 403: Forbidden`
+
+Check the latest release in https://github.com/yt-dlp/yt-dlp/releases, update the
+entry in `requirements.txt` and reinstall the dependencies.
