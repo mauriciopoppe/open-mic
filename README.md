@@ -13,6 +13,12 @@ about how to create a backing track.
 Please also read `split-track.sh` for an automated script that runs the
 two commands run in the article above.
 
+```bash
+# Read the script before running these commands!
+chmod +x split-track.sh
+./split-track.sh -v <youtube-video-url>
+```
+
 ## Known errors
 
 ### `ERROR: unable to download video data: HTTP Error 403: Forbidden`
