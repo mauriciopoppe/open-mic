@@ -10,7 +10,7 @@ There's a long intro so I cut that with ffmpeg
 sanitize_filename() {
   local filename="$(cat)"
   filename=$(echo "$filename" | sed 's/[][ \(\)]/_/g')
-  filename=$(echo "$filename" | sed 's/[^A-Za-z0-9.\-_]//g')
+  filename=$(echo "$filename" | sed 's/[^A-Za-z0-9._-]//g')
   echo "$filename"
 }
 
