@@ -8,15 +8,15 @@ that way, I can play it on the background while I sing and play the guitar.
 Read https://mauriciopoppe.com/notes/backing-track-for-open-mic/ for more info
 about how to create a backing track.
 
-## Automated setup
+## Split a song into tracks
 
-Please also read `split-track.sh` for an automated script that runs the
+Please also read `split-song.sh` for an automated script that runs the
 two commands run in the article above.
 
 ```bash
 # Read the script before running these commands!
-chmod +x split-track.sh
-./split-track.sh -v <youtube-video-url>
+chmod +x split-song.sh
+./split-song.sh -v <youtube-video-url>
 ```
 
 ## Known errors
