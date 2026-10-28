@@ -12,17 +12,13 @@ COMMANDS = {
     "align-midi": ("open_mic.midi.align", "Measure and correct MIDI timing against audio"),
     "quantize-midi": ("open_mic.midi.quantize", "Stretch and quantize a MIDI file"),
     "solo-piano": ("open_mic.midi.solo_piano", "Build a solo-piano arrangement from MIDI stems"),
-    "analyze-piano": ("open_mic.analysis.analyze_progressive_piano", "Find piano runs in a MIDI file"),
-    "analyze-lesson": ("open_mic.analysis.analyze_vocal_lesson", "Extract acoustic evidence from a lesson recording"),
-    "extract-piano-patterns": ("open_mic.analysis.extract_piano_patterns", "Find ascending piano patterns in MIDI"),
-    "transcribe-lesson": ("open_mic.analysis.transcribe_vocal_lesson", "Transcribe a lesson recording locally"),
 }
 
 
 def print_help() -> None:
     print("""Usage: open-mic <command> [options]
 
-Create stems, mixes, MIDI, and offline practice analyses.
+Create stems, mixes, and MIDI arrangements.
 
 Typical workflow:
   open-mic separate --video <youtube-url>
@@ -35,7 +31,6 @@ Default workspace: workspace/
   recordings/ user recordings
   mixes/      rendered backing tracks
   midi/       generated MIDI and reports
-  analysis/   generated analysis results
   models/     local model and IR assets
 
 Commands:

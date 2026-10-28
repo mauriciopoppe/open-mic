@@ -50,10 +50,8 @@ open-mic transcribe-midi \
   --output-dir "workspace/midi/<song>"
 ```
 
-Other useful commands include `align-midi`, `quantize-midi`, `solo-piano`,
-`analyze-piano`, `analyze-lesson`, `extract-piano-patterns`, and
-`transcribe-lesson`. Each command explains its inputs and defaults through its
-`--help` screen.
+Other useful commands include `align-midi`, `quantize-midi`, and `solo-piano`.
+Each command explains its inputs and defaults through its `--help` screen.
 
 All downloads and generated files live under `workspace/`, which is ignored by
 Git. This keeps the repository focused on the tools and documentation.

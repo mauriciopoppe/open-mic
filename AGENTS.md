@@ -33,7 +33,6 @@ The default workspace contract is:
 - `workspace/recordings/`: user-provided recordings.
 - `workspace/mixes/`: rendered WAV backing tracks.
 - `workspace/midi/`: generated MIDI and alignment reports.
-- `workspace/analysis/`: generated analysis output.
 - `workspace/models/`: local model and impulse-response assets.
 
 Everything under `workspace/` is ignored by Git. Never place credentials,
@@ -49,10 +48,6 @@ Available commands:
 | `align-midi` | Measure or correct MIDI timing against audio. |
 | `quantize-midi` | Stretch and quantize MIDI. |
 | `solo-piano` | Create a solo-piano arrangement from MIDI stems. |
-| `analyze-piano` | Find progressive piano runs in MIDI. |
-| `analyze-lesson` | Extract acoustic evidence from a lesson recording. |
-| `extract-piano-patterns` | Find ascending piano patterns in MIDI. |
-| `transcribe-lesson` | Run local speech-to-text on a lesson recording. |
 
 ## Key Workflows & Scripts
 
