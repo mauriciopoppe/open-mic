@@ -2,6 +2,11 @@
 *.mp4
 *.srt
 separated/
+sites/
+workspace/
+:memory:.ses
+.DS_Store
+MY_LIST.md
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 

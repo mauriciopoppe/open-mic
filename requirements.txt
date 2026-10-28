@@ -1,4 +1,5 @@
 antlr4-python3-runtime==4.9.3
+av==19.0.2
 Brotli==1.1.0
 certifi==2024.2.2
 cffi==1.16.0
@@ -7,6 +8,7 @@ cloudpickle==3.0.0
 Cython==3.0.10
 demucs==4.0.1
 diffq==0.2.4
+faster-whisper==1.2.1
 dora_search==0.1.12
 einops==0.7.0
 filelock==3.13.4
