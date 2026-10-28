@@ -15,6 +15,28 @@ pip install -e .
 The command-line tool is `open-mic`. Run `open-mic --help` for the complete
 command list, or `open-mic <command> --help` for detailed options.
 
+## Using this repository with an agent
+
+Agents should read [`AGENTS.md`](AGENTS.md) before changing the project. It is
+the detailed operating contract for the workspace, commands, dependencies, and
+safety rules.
+
+The normal agent workflow is:
+
+1. Inspect the working tree and existing changes before editing.
+2. Use the `open-mic` CLI rather than invoking implementation modules directly.
+3. Keep downloads, recordings, generated MIDI, reports, and models under the
+   ignored `workspace/` directory.
+4. Never put credentials, Drive IDs, private recordings, or generated media in
+   tracked files.
+5. Validate changes with CLI help, Python compilation, and focused smoke tests.
+6. Review the final diff and commit only source, documentation, configuration,
+   and tests.
+
+Agents should prefer explicit paths and flags, avoid hidden song-specific
+defaults, and ask before taking actions outside this repository or uploading
+files to an external service.
+
 ## Make a backing track
 
 Download a song and split it into bass, drums, guitar, other, piano, and vocals:
