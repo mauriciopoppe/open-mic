@@ -37,6 +37,12 @@ Agents should prefer explicit paths and flags, avoid hidden song-specific
 defaults, and ask before taking actions outside this repository or uploading
 files to an external service.
 
+The test suite uses Python's standard library and can run without pytest:
+
+```bash
+.venv/bin/python -m unittest discover -s tests -v
+```
+
 ## Make a backing track
 
 Download a song and split it into bass, drums, guitar, other, piano, and vocals:

@@ -38,6 +38,12 @@ The default workspace contract is:
 Everything under `workspace/` is ignored by Git. Never place credentials,
 Drive IDs, private recordings, or generated media in tracked source files.
 
+Run the tests with the standard library test runner:
+
+```bash
+.venv/bin/python -m unittest discover -s tests -v
+```
+
 Available commands:
 
 | Command | Purpose |
