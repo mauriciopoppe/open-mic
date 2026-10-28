@@ -8,6 +8,52 @@ This repository provides tooling and workflows to download songs, split them int
 - Python version / dependencies: `.venv/bin/python3` (includes `demucs`, `yt-dlp`, `torch`, `torchaudio`, `soundfile`, `numpy`, `scipy`, `librosa`).
 - System tools: `ffmpeg`, `ffprobe`, `rubberband`, `jq`.
 
+## Command contract
+
+Install the package before invoking commands:
+
+```bash
+source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e .
+```
+
+Use the CLI only; implementations live under `src/open_mic/` and are not
+standalone scripts. Discover the full interface with:
+
+```bash
+open-mic --help
+open-mic <command> --help
+```
+
+The default workspace contract is:
+
+- `workspace/downloads/`: downloaded source audio.
+- `workspace/stems/htdemucs_6s/<song>/`: six Demucs MP3 stems.
+- `workspace/recordings/`: user-provided recordings.
+- `workspace/mixes/`: rendered WAV backing tracks.
+- `workspace/midi/`: generated MIDI and alignment reports.
+- `workspace/analysis/`: generated analysis output.
+- `workspace/models/`: local model and impulse-response assets.
+
+Everything under `workspace/` is ignored by Git. Never place credentials,
+Drive IDs, private recordings, or generated media in tracked source files.
+
+Available commands:
+
+| Command | Purpose |
+| --- | --- |
+| `separate` | Download audio and create six Demucs stems. |
+| `mix` | Replace one stem with a custom recording and render WAV. |
+| `transcribe-midi` | Convert stems or a recording to MIDI. |
+| `align-midi` | Measure or correct MIDI timing against audio. |
+| `quantize-midi` | Stretch and quantize MIDI. |
+| `solo-piano` | Create a solo-piano arrangement from MIDI stems. |
+| `analyze-piano` | Find progressive piano runs in MIDI. |
+| `analyze-lesson` | Extract acoustic evidence from a lesson recording. |
+| `extract-piano-patterns` | Find ascending piano patterns in MIDI. |
+| `transcribe-lesson` | Run local speech-to-text on a lesson recording. |
+
 ## Key Workflows & Scripts
 
 ### 1. Song Separation (`open-mic separate`)
