@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Analyze and locally align MIDI note timing against an audio recording."""
 
-import argparse
 import csv
 from pathlib import Path
 
@@ -141,22 +140,20 @@ def warp_midi(input_path: Path, output_path: Path, events, midi, tempo, offsets,
     midi.save(output_path)
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("audio", type=Path)
-    parser.add_argument("midi", type=Path)
-    parser.add_argument("--output-midi", type=Path)
-    parser.add_argument("--report", type=Path, default=Path("workspace/midi/alignment_report.csv"))
-    parser.add_argument("--bpm", type=float, help="Override the MIDI tempo for timing conversion")
-    parser.add_argument("--frame-ms", type=float, default=10.0)
-    parser.add_argument("--window-ms", type=float, default=1000.0)
-    parser.add_argument("--search-ms", type=float, default=150.0)
-    args = parser.parse_args()
-
-    hop_length = max(1, round(22050 * args.frame_ms / 1000.0))
+def align_midi(
+    audio_path: Path,
+    midi_path: Path,
+    output_midi: Path | None = None,
+    report: Path = Path("workspace/midi/alignment_report.csv"),
+    bpm: float | None = None,
+    frame_ms: float = 10.0,
+    window_ms: float = 1000.0,
+    search_ms: float = 150.0,
+) -> None:
+    hop_length = max(1, round(22050 * frame_ms / 1000.0))
     frame_seconds = hop_length / 22050.0
-    audio, _, audio_duration = onset_signal(args.audio, hop_length)
-    midi, tempo, events = midi_note_events(args.midi, args.bpm)
+    audio, _, audio_duration = onset_signal(audio_path, hop_length)
+    midi, tempo, events = midi_note_events(midi_path, bpm)
     duration = max(audio_duration, max((event[3] for event in events), default=0))
     frame_count = max(len(audio), round(duration / frame_seconds) + 1)
     audio = np.pad(audio, (0, max(0, frame_count - len(audio))))
@@ -164,22 +161,18 @@ def main():
     offsets, confidence = local_lag(
         audio,
         midi_onsets,
-        max(3, round(args.window_ms / args.frame_ms)),
-        max(1, round(args.search_ms / args.frame_ms)),
+        max(3, round(window_ms / frame_ms)),
+        max(1, round(search_ms / frame_ms)),
     )
-    write_report(args.report, offsets, confidence, frame_seconds)
+    write_report(report, offsets, confidence, frame_seconds)
 
     reliable = confidence > np.percentile(confidence, 60)
     print(f"Audio duration: {audio_duration:.3f}s")
     print(f"Analysis resolution: {frame_seconds * 1000:.2f}ms")
     print(f"Median offset: {np.median(offsets[reliable]) * frame_seconds * 1000:.2f}ms audio-minus-MIDI")
     print(f"Offset range: {np.percentile(offsets[reliable], 5) * frame_seconds * 1000:.2f}ms to {np.percentile(offsets[reliable], 95) * frame_seconds * 1000:.2f}ms")
-    print(f"Wrote report: {args.report}")
+    print(f"Wrote report: {report}")
 
-    if args.output_midi:
-        warp_midi(args.midi, args.output_midi, events, midi, tempo, offsets, frame_seconds)
-        print(f"Wrote aligned MIDI: {args.output_midi}")
-
-
-if __name__ == "__main__":
-    main()
+    if output_midi:
+        warp_midi(midi_path, output_midi, events, midi, tempo, offsets, frame_seconds)
+        print(f"Wrote aligned MIDI: {output_midi}")

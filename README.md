@@ -45,12 +45,25 @@ WAV.
 Convert stems or a recording to MIDI:
 
 ```bash
-open-mic transcribe-midi \
+open-mic midi transcribe \
   --stem-dir "workspace/stems/htdemucs_6s/<song>" \
   --output-dir "workspace/midi/<song>"
 ```
 
-Other useful commands include `align-midi`, `quantize-midi`, and `solo-piano`.
+Prepare an existing MIDI file for a new tempo and grid:
+
+```bash
+open-mic midi prepare input.mid output.mid --bpm 130 --grid 8
+```
+
+Create a solo-piano arrangement from prepared MIDI stems:
+
+```bash
+open-mic arrange piano \
+  --midi-dir "workspace/midi/<song>" \
+  --output "workspace/midi/<song>-solo-piano.mid"
+```
+
 Each command explains its inputs and defaults through its `--help` screen.
 
 All downloads and generated files live under `workspace/`, which is ignored by

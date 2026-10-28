@@ -44,10 +44,9 @@ Available commands:
 | --- | --- |
 | `separate` | Download audio and create six Demucs stems. |
 | `mix` | Replace one stem with a custom recording and render WAV. |
-| `transcribe-midi` | Convert stems or a recording to MIDI. |
-| `align-midi` | Measure or correct MIDI timing against audio. |
-| `quantize-midi` | Stretch and quantize MIDI. |
-| `solo-piano` | Create a solo-piano arrangement from MIDI stems. |
+| `midi transcribe` | Convert stems or a recording to MIDI. |
+| `midi prepare` | Align, stretch, and optionally quantize MIDI. |
+| `arrange piano` | Create a solo-piano arrangement from MIDI stems. |
 
 ## Key Workflows & Scripts
 
@@ -90,14 +89,14 @@ To change pitch by N semitones (e.g. down 1 semitone):
 rubberband -p -1 "input.mp3" "output_m1.mp3"
 ```
 
-### 5. Audio-to-MIDI Transcription (`open-mic transcribe-midi`)
+### 5. Audio-to-MIDI Transcription (`open-mic midi transcribe`)
 Converts audio stems and custom recordings to high-quality MIDI files using Spotify's Basic Pitch and PrettyMIDI:
 - **Per-stem acoustic filters**: Low/high frequency limits tailored to each instrument's physical range (e.g. Bass 35–350Hz, Vocals 100–1100Hz).
 - **Tempo sync**: Automatic BPM detection from drums (`107.67 BPM` for *Meet Me in Amsterdam*) so the MIDI snaps to DAW musical measure grids.
 - **Monophonic cleanup**: Truncates unnatural overlapping chord notes on bass and lead vocals.
 - **Ghost note filter**: Eliminates micro-transients (<60ms) and low-velocity room/strum bleed.
 ```bash
-open-mic transcribe-midi \
+open-mic midi transcribe \
   --stem-dir "workspace/stems/htdemucs_6s/<song_title>" \
   --recording "/path/to/recording.m4a" \
   --offset 2.845 \
@@ -105,14 +104,27 @@ open-mic transcribe-midi \
 ```
 Outputs:
 - Individual stem files: `Main Guitar.mid`, `Bass.mid`, `Piano.mid`, `Vocals.mid`, `Other.mid`.
-### 6. Solo Piano Arrangement (`open-mic solo-piano`)
+
+### 6. MIDI Preparation (`open-mic midi prepare`)
+Align, tempo-stretch, and optionally quantize an existing MIDI file. At least
+one of `--audio` or `--bpm` is required; `--grid` requires `--bpm`.
+Alignment runs before tempo/grid preparation when both are requested.
+```bash
+open-mic midi prepare input.mid output.mid \
+  --audio "workspace/stems/htdemucs_6s/<song>/combined.mp3" \
+  --bpm 130 \
+  --grid 8 \
+  --report "workspace/midi/<song>-alignment.csv"
+```
+
+### 7. Solo Piano Arrangement (`open-mic arrange piano`)
 Synthesizes a cohesive solo piano piece from the stem MIDI tracks:
 - **Left Hand**: Bassline root notes and rhythmic pulses (Octaves 1–2, solid dynamics).
 - **Right Hand Chords**: Harmonic pad and chord voicings from piano & guitar (Octaves 3–4, gentle accompaniment dynamics).
 - **Top Singing Melody**: Vocal lead line and melodic hooks voiced on the highest notes (Octaves 4–5, prominent singing dynamics).
 - **Sustain Pedaling**: Automatic `CC 64` pedaling synchronized with measure transitions for realistic acoustic grand piano resonance.
 ```bash
-open-mic solo-piano \
+open-mic arrange piano \
   --midi-dir "/path/to/HQ_MIDI" \
   --bpm 107.67 \
   --output "/path/to/Solo_Piano.mid"

@@ -8,4 +8,5 @@ def test_audio_modules_import():
 
 def test_midi_modules_import():
     import open_mic.midi.align  # noqa: F401
+    import open_mic.midi.prepare  # noqa: F401
     import open_mic.midi.quantize  # noqa: F401

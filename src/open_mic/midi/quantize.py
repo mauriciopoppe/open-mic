@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Quantize MIDI note events while preserving the source file."""
 
-import argparse
 from pathlib import Path
 
 import mido
@@ -33,7 +32,7 @@ def quantize_midi(
             if message.type == "set_tempo":
                 if absolute_tick == 0:
                     message = message.copy(tempo=mido.bpm2tempo(target_bpm))
-                events.append((track_index, stretched_tick, event_index, message))
+                events.append((track_index, int(round(stretched_tick)), event_index, message))
             elif message.type in {"note_on", "note_off"}:
                 note_tick = (
                     quantize_tick(stretched_tick, midi.ticks_per_beat, subdivision)
@@ -67,35 +66,3 @@ def quantize_midi(
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     midi.save(output_path)
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("input", type=Path, help="Source MIDI file")
-    parser.add_argument("output", type=Path, help="Quantized MIDI file")
-    parser.add_argument(
-        "--source-bpm",
-        type=float,
-        default=120.0,
-        help="Tempo represented by the input MIDI (default: 120).",
-    )
-    parser.add_argument("--bpm", type=float, default=130.0, help="Target tempo.")
-    parser.add_argument(
-        "--subdivision",
-        type=int,
-        default=8,
-        help="Grid subdivisions per beat: 4=16th notes, 8=32nd notes (default: 8)",
-    )
-    parser.add_argument(
-        "--no-quantize",
-        action="store_true",
-        help="Stretch timing and change tempo without snapping notes to a grid.",
-    )
-    args = parser.parse_args()
-    subdivision = None if args.no_quantize else args.subdivision
-    quantize_midi(args.input, args.output, args.source_bpm, args.bpm, subdivision)
-    print(f"Saved quantized MIDI to {args.output}")
-
-
-if __name__ == "__main__":
-    main()
