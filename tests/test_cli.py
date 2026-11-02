@@ -25,6 +25,7 @@ class CliHelpTests(unittest.TestCase):
         help_text = self.run_cli("--help")
         self.assertIn("midi/", help_text)
         self.assertIn("arrange/", help_text)
+        self.assertIn("karaoke/", help_text)
         self.assertIn("separate", help_text)
         self.assertNotIn("align-midi", help_text)
 
@@ -32,6 +33,11 @@ class CliHelpTests(unittest.TestCase):
         help_text = self.run_cli("midi", "--help")
         self.assertIn("transcribe", help_text)
         self.assertIn("prepare", help_text)
+
+        karaoke_help = self.run_cli("karaoke", "--help")
+        self.assertIn("prepare", karaoke_help)
+        self.assertIn("compare", karaoke_help)
+        self.assertIn("validate-site", karaoke_help)
 
 
 if __name__ == "__main__":

@@ -15,6 +15,15 @@ GROUPS = {
         "transcribe": ("open_mic.midi.transcribe", "Convert audio stems or a recording to MIDI"),
         "prepare": ("open_mic.midi.prepare", "Align, stretch, and optionally quantize MIDI"),
     },
+    "karaoke": {
+        "prepare": ("open_mic.karaoke.prepare", "Prepare stems, pitch metadata, and a local backing mix"),
+        "compare": ("open_mic.karaoke.compare", "Compare singing pitch trackers in a local A/B viewer"),
+        "compare-separators": ("open_mic.karaoke.compare_separators", "Compare vocal separators with identical pitch analysis"),
+        "coach-analyze": ("open_mic.karaoke.coach_analyze", "Rank coach-worthy vocal passages from metadata"),
+        "transcribe-vocal": ("open_mic.karaoke.transcribe_vocal", "Create timed lyric fragments from an isolated vocal"),
+        "merge": ("open_mic.karaoke.consensus", "Merge tracker evidence into a teaching contour"),
+        "validate-site": ("open_mic.karaoke.validate_site", "Reject published audio assets"),
+    },
     "arrange": {
         "piano": ("open_mic.midi.solo_piano", "Build a solo-piano arrangement from MIDI stems"),
     },
@@ -30,6 +39,7 @@ Typical workflow:
   open-mic separate --video <youtube-url>
   open-mic mix --stem-dir <stems> --recording <file> --output <wav>
   open-mic midi transcribe --stem-dir <stems> --output-dir <directory>
+  open-mic karaoke prepare --video <youtube-url> --song-id <slug>
 
 Default workspace: workspace/
   downloads/  source audio downloaded by separate

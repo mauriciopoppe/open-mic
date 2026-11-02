@@ -92,6 +92,51 @@ open-mic arrange piano \
   --output "workspace/midi/<song>-solo-piano.mid"
 ```
 
+Prepare a karaoke pitch map and a local vocals-removed practice mix:
+
+```bash
+open-mic karaoke prepare \
+  --video "https://www.youtube.com/watch?v=<video-id>" \
+  --song-id <song-slug> \
+  --title "<song title>" \
+  --artist "<artist>" \
+  --output-dir "workspace/sites/<site>/dist/assets/<song-slug>"
+```
+
+The publishable output contains only JSON pitch metadata. The downloaded
+master, Demucs stems, and instrumental mix stay under `workspace/`. Before
+packaging a static site, verify that no audio was copied into it:
+
+```bash
+open-mic karaoke validate-site --site-dir workspace/sites/<site>/dist
+```
+
+Compare independent singing-pitch trackers before choosing a published contour:
+
+```bash
+open-mic karaoke compare \
+  --vocal workspace/stems/htdemucs_6s/<song>/vocals.mp3 \
+  --mix workspace/downloads/<song>.mp3 \
+  --song-id <song-slug> \
+  --cues workspace/sites/<site>/dist/assets/<song-slug>/cues.json \
+  --rmvpe-repo workspace/models/yxlllc-RMVPE \
+  --rmvpe-model workspace/models/yxlllc-RMVPE/pretrain/model.pt
+```
+
+The command generates a local-only synchronized A/B viewer under
+`workspace/karaoke/<song-slug>/comparison/`. RMVPE source and checkpoints are
+kept under `workspace/models/`; they are never packaged with the site.
+
+After reviewing the trackers, build a high-resolution teaching contour with
+pYIN as the structural track and corroborated RMVPE corrections, gap fills,
+and vibrato detail:
+
+```bash
+open-mic karaoke merge \
+  --comparison workspace/karaoke/<song-slug>/comparison/comparison.json \
+  --output workspace/sites/<site>/dist/assets/<song-slug>/pitch.json
+```
+
 Each command explains its inputs and defaults through its `--help` screen.
 
 All downloads and generated files live under `workspace/`, which is ignored by
