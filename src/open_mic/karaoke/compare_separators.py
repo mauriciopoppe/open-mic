@@ -75,6 +75,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--rmvpe-repo", required=True, type=Path)
     p.add_argument("--rmvpe-model", required=True, type=Path)
     p.add_argument("--frame-rate", type=int, default=100)
+    p.add_argument("--minimum-note", default="E2")
+    p.add_argument("--maximum-note", default="G5")
     return p.parse_args()
 
 
@@ -87,13 +89,14 @@ def main() -> None:
     for p in [a.mix,*stems.values()]:
         if not p.is_file(): raise FileNotFoundError(p)
     a.output_dir.mkdir(parents=True,exist_ok=True); rate=a.frame_rate; result={}; raw={}; duration=0.0; primary_strength=None
+    fmin=float(librosa.note_to_hz(a.minimum_note)); fmax=float(librosa.note_to_hz(a.maximum_note))
     for name,path in stems.items():
         print(f"Analyzing {name}: pYIN",flush=True); y,sr=librosa.load(path,sr=16000,mono=True); duration=max(duration,len(y)/sr); length=round(len(y)/sr*rate)+1
         if name == "mdx23c":
             primary_strength = _rms_strength(y, sr, rate, length)
         cache=a.output_dir/f"{name}-pyin.npz"
         if cache.is_file(): z=np.load(cache); pyin,pc=z['midi'],z['confidence']
-        else: pyin,pc=extract_pyin(y,sr,rate,librosa.note_to_hz('E2'),librosa.note_to_hz('C5')); np.savez_compressed(cache,midi=pyin,confidence=pc)
+        else: pyin,pc=extract_pyin(y,sr,rate,fmin,fmax); np.savez_compressed(cache,midi=pyin,confidence=pc)
         print(f"Analyzing {name}: RMVPE",flush=True); rmvpe,rc=run_rmvpe(path,a.output_dir/f"{name}-rmvpe.csv",repository=a.rmvpe_repo,model=a.rmvpe_model)
         pyin=align(pyin,length); pc=np.nan_to_num(align(pc,length),nan=0); rmvpe=align(rmvpe,length); rc=np.nan_to_num(align(rc,length),nan=0)
         raw[name] = {"pyin": (pyin, pc), "rmvpe": (rmvpe, rc)}

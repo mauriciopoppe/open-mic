@@ -37,7 +37,7 @@ def merge_pitch_tracks(
     for index in range(length):
         p, vocal, mix = pyin[index], rmvpe_vocal[index], rmvpe_mix[index]
         if not np.isnan(p) and not np.isnan(vocal) and not np.isnan(mix):
-            octave_error = 9.5 <= abs(p - vocal) <= 14.5
+            octave_error = (9.5 <= abs(p - vocal) <= 14.5) or (17.5 <= abs(p - vocal) <= 26.5)
             if octave_error and abs(vocal - mix) <= 0.55:
                 merged[index], source[index] = vocal, "rmvpe-octave"
                 continue

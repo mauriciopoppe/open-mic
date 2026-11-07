@@ -16,7 +16,11 @@ class CliHelpTests(unittest.TestCase):
         try:
             sys.argv = ["open-mic", *arguments]
             with contextlib.redirect_stdout(output):
-                cli.main()
+                try:
+                    cli.main()
+                except SystemExit as exit_exc:
+                    if exit_exc.code not in (0, None):
+                        raise
         finally:
             sys.argv = original_argv
         return output.getvalue()
@@ -35,9 +39,16 @@ class CliHelpTests(unittest.TestCase):
         self.assertIn("prepare", help_text)
 
         karaoke_help = self.run_cli("karaoke", "--help")
+        self.assertIn("ingest", karaoke_help)
         self.assertIn("prepare", karaoke_help)
         self.assertIn("compare", karaoke_help)
         self.assertIn("validate-site", karaoke_help)
+        self.assertIn("LLM curation steps", karaoke_help)
+
+        ingest_help = self.run_cli("karaoke", "ingest", "--help")
+        self.assertIn("Deterministic pipeline steps", ingest_help)
+        self.assertIn("compare-separators", ingest_help)
+        self.assertIn("coach-analyze", ingest_help)
 
 
 if __name__ == "__main__":

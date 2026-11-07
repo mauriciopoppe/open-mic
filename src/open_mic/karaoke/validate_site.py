@@ -40,6 +40,10 @@ def song_asset_errors(site_dir: Path) -> list[str]:
             relative = manifest.get(field, default)
             if not isinstance(relative, str) or not (song_dir / relative).is_file():
                 errors.append(f"{manifest_path}: referenced {field} file is missing")
+        if "lyrics" in manifest:
+            lyrics_rel = manifest.get("lyrics")
+            if not isinstance(lyrics_rel, str) or not (song_dir / lyrics_rel).is_file():
+                errors.append(f"{manifest_path}: referenced lyrics file is missing")
         duration = manifest.get("duration", 0)
         for section_id, section in manifest.get("sections", {}).items():
             start, end = section.get("start"), section.get("end")

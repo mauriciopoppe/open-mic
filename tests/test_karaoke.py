@@ -14,6 +14,7 @@ from open_mic.karaoke.compare import _rms_strength, disagreement
 from open_mic.karaoke.compare_separators import fuse
 from open_mic.karaoke.coach_analyze import analyze
 from open_mic.karaoke.consensus import bridge_phrase_gaps, merge_pitch_tracks, smooth_strength, vibrato_depth
+from open_mic.karaoke.ingest import compute_pitch_range, extract_youtube_id, update_song_catalog
 from open_mic.karaoke.validate_site import published_audio_files, song_asset_errors
 
 
@@ -154,13 +155,15 @@ class TrackerComparisonTests(unittest.TestCase):
         self.assertLess(float(np.median(strength[100:190])), 0.5)
 
     def test_merge_uses_two_rmvpe_tracks_to_correct_an_octave(self):
-        pyin = np.array([60.0, 60.0])
-        vocal = np.array([72.0, 60.1])
-        mix = np.array([72.1, 60.2])
-        merged, source = merge_pitch_tracks(pyin, vocal, mix, np.ones(2), frame_rate=100)
+        pyin = np.array([60.0, 60.0, 50.0])
+        vocal = np.array([72.0, 60.1, 74.0])
+        mix = np.array([72.1, 60.2, 74.1])
+        merged, source = merge_pitch_tracks(pyin, vocal, mix, np.ones(3), frame_rate=100)
         self.assertAlmostEqual(merged[0], 72.0)
         self.assertEqual(source[0], "rmvpe-octave")
         self.assertAlmostEqual(merged[1], 60.0)
+        self.assertAlmostEqual(merged[2], 74.0)
+        self.assertEqual(source[2], "rmvpe-octave")
 
     def test_vibrato_detector_finds_a_six_hertz_modulation(self):
         frame_rate = 100
@@ -187,6 +190,33 @@ class TrackerComparisonTests(unittest.TestCase):
         source = np.array(["pyin", *(["none"] * 14), "pyin"], dtype=object)
         bridged, _ = bridge_phrase_gaps(midi, source, np.zeros(16), frame_rate=100)
         self.assertTrue(np.isnan(bridged[1:-1]).all())
+
+
+class KaraokeIngestHelperTests(unittest.TestCase):
+    def test_extracts_youtube_id_from_watch_and_short_urls(self):
+        self.assertEqual(extract_youtube_id("https://www.youtube.com/watch?v=C8hkCIs0CB0"), "C8hkCIs0CB0")
+        self.assertEqual(extract_youtube_id("https://youtu.be/C8hkCIs0CB0?t=10"), "C8hkCIs0CB0")
+        self.assertEqual(extract_youtube_id("https://example.com/audio.mp3"), "")
+
+    def test_computes_padded_pitch_range(self):
+        frames = [
+            {"voiced": True, "midi": 50.0},
+            {"voiced": True, "midi": 60.0},
+            {"voiced": True, "midi": 72.0},
+            {"voiced": False, "midi": None},
+        ]
+        pitch_range = compute_pitch_range(frames)
+        self.assertLessEqual(pitch_range["minimumMidi"], 50)
+        self.assertGreaterEqual(pitch_range["maximumMidi"], 72)
+
+    def test_updates_song_catalog_idempotently(self):
+        with tempfile.TemporaryDirectory() as directory:
+            site_dir = Path(directory)
+            update_song_catalog(site_dir, song_id="test-song", title="Test Song", artist="Test Artist")
+            update_song_catalog(site_dir, song_id="test-song", title="Test Song Updated", artist="Test Artist")
+            catalog_text = (site_dir / "assets" / "songs.json").read_text()
+            self.assertIn("Test Song Updated", catalog_text)
+            self.assertEqual(catalog_text.count('"id": "test-song"'), 1)
 
 
 if __name__ == "__main__":

@@ -16,6 +16,7 @@ GROUPS = {
         "prepare": ("open_mic.midi.prepare", "Align, stretch, and optionally quantize MIDI"),
     },
     "karaoke": {
+        "ingest": ("open_mic.karaoke.ingest", "Run all deterministic steps to add a song to Song Lab"),
         "prepare": ("open_mic.karaoke.prepare", "Prepare stems, pitch metadata, and a local backing mix"),
         "compare": ("open_mic.karaoke.compare", "Compare singing pitch trackers in a local A/B viewer"),
         "compare-separators": ("open_mic.karaoke.compare_separators", "Compare vocal separators with identical pitch analysis"),
@@ -39,7 +40,7 @@ Typical workflow:
   open-mic separate --video <youtube-url>
   open-mic mix --stem-dir <stems> --recording <file> --output <wav>
   open-mic midi transcribe --stem-dir <stems> --output-dir <directory>
-  open-mic karaoke prepare --video <youtube-url> --song-id <slug>
+  open-mic karaoke ingest --video <youtube-url> --song-id <slug> --title <title> --artist <artist>
 
 Default workspace: workspace/
   downloads/  source audio downloaded by separate
@@ -64,6 +65,17 @@ def print_group_help(group: str) -> None:
     print(f"Usage: open-mic {group} <command> [options]\n\nCommands:")
     for name, (_, description) in GROUPS[group].items():
         print(f"  {name:<24} {description}")
+    if group == "karaoke":
+        print("""
+Song Lab ingestion workflow:
+  1. Deterministic pipeline (single command):
+       open-mic karaoke ingest --video <youtube-url> --song-id <slug> --title "<Title>" --artist "<Artist>"
+     Runs: separate -> MDX23C vocal -> compare-separators -> merge -> transcribe-vocal -> coach-analyze -> LRCLIB lyrics.lrc -> manifest/catalog init.
+     If any stage needs debugging or re-running with custom flags, invoke the subcommands above directly.
+  2. LLM curation steps:
+     - Populate labeled sections in sites/voice/dist/assets/<slug>/manifest.json from lyrics.lrc + transcript.json.
+     - Author 8-12 coaching cards in sites/voice/dist/assets/<slug>/cues.json from workspace/karaoke/<slug>/coach-analysis.json.
+     - Verify with: open-mic karaoke validate-site --site-dir sites/voice/dist""")
     print(f"\nRun 'open-mic {group} <command> --help' for arguments and defaults.")
 
 

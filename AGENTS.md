@@ -53,6 +53,7 @@ Available commands:
 | `midi transcribe` | Convert stems or a recording to MIDI. |
 | `midi prepare` | Align, stretch, and optionally quantize MIDI. |
 | `arrange piano` | Create a solo-piano arrangement from MIDI stems. |
+| `karaoke ingest` | Run all deterministic Song Lab ingestion steps in a single command. |
 
 ## Key Workflows & Scripts
 
@@ -147,57 +148,48 @@ open-mic arrange piano \
 
 Use this workflow when asked to add or prepare another karaoke song. The Song
 Lab player is generic: `#karaoke/<song-id>` loads its identity, playback,
-sections, pitch range, contour, and coach notebook from
+sections, pitch range, contour, synced lyrics, and coach notebook from
 `sites/voice/dist/assets/<song-id>/`.
 
 1. Keep downloaded audio, Demucs stems, MDX23C stems, models, comparison data,
    and instrumental mixes under `workspace/`. Never copy audio into `dist/`.
-2. Create both vocal estimates:
-   - Demucs: `open-mic separate --video <official-url>`.
-   - MDX23C: run `MDX23C-8KFFT-InstVoc_HQ.ckpt` through the local
-     `audio-separator` environment under `workspace/models/`.
-3. Analyze both stems with the same settings and build the MDX-primary fusion:
+2. **Deterministic Pipeline (Single CLI Call)**:
+   Run `open-mic karaoke ingest` to execute all deterministic stages (Demucs
+   6-stem separation, MDX23C vocal extraction, dual-separator `pYIN` + `RMVPE`
+   analysis, MDX-primary contour fusion into `pitch.json`, Whisper word-level
+   vocal transcription, acoustic passage ranking in `coach-analysis.json`,
+   LRCLIB standard `lyrics.lrc` lookup, and initial `manifest.json` /
+   `songs.json` registration):
 
 ```bash
-open-mic karaoke compare-separators \
-  --stem demucs=<demucs-vocals> \
-  --stem mdx23c=<mdx23c-vocals> \
-  --mix <downloaded-source> \
-  --output-dir workspace/karaoke/<song-id>/separator-comparison/viewer \
-  --rmvpe-repo workspace/models/yxlllc-RMVPE \
-  --rmvpe-model workspace/models/yxlllc-RMVPE/pretrain/model.pt
-
-open-mic karaoke merge \
-  --comparison workspace/karaoke/<song-id>/separator-comparison/viewer/comparison.json \
-  --output sites/voice/dist/assets/<song-id>/pitch.json
-
-open-mic karaoke transcribe-vocal <demucs-vocals> \
-  --output workspace/karaoke/<song-id>/transcript.json
-
-open-mic karaoke coach-analyze \
-  --pitch sites/voice/dist/assets/<song-id>/pitch.json \
-  --transcript workspace/karaoke/<song-id>/transcript.json \
-  --output workspace/karaoke/<song-id>/coach-analysis.json
+open-mic karaoke ingest \
+  --video <official-url> \
+  --song-id <song-id> \
+  --title "<Title>" \
+  --artist "<Artist>"
 ```
 
-4. Add `manifest.json` and `cues.json` beside `pitch.json`:
+   If you need to debug or re-run any individual stage, run `open-mic karaoke --help`
+   or `open-mic karaoke ingest --help` to see the underlying subcommands
+   (`separate`, `karaoke compare-separators`, `karaoke merge`,
+   `karaoke transcribe-vocal`, `karaoke coach-analyze`, `karaoke validate-site`).
+3. **LLM Curation Steps (`manifest.json`, `cues.json`, and `lyrics.lrc`)**:
+   - Inspect `sites/voice/dist/assets/<song-id>/lyrics.lrc` and
+     `workspace/karaoke/<song-id>/transcript.json` to verify LRC timestamps
+     align with the isolated vocal onset and populate labeled `sections`
+     (`intro`, `verse1`, `chorus1`, `verse2`, `bridge`, `outro`) in
+     `sites/voice/dist/assets/<song-id>/manifest.json`.
    - Required manifest fields: `id`, `title`, `artist`, `duration`,
-     `sourceUrl`, `frameRate`, `pitch`, and `cues`.
-   - `id` must equal the asset directory and URL slug.
-   - Add `youtubeVideoId`, `alignmentOffset`, `pitchRange`, and labeled
-     `sections` when known.
-   - `localReferencePath` is optional and used only on localhost.
-   - Cues contain `start`, `end`, `fragment`, `title`, and `text`. Use only
-     short identifying lyric fragments; never publish complete lyrics.
-   - Base coach cues on the generated coach-analysis rankings for range,
-     high notes, vibrato, agility, sustain, and dynamics. Treat transcript
-     text as a draft; use neutral passage labels when sung words are uncertain.
-   - Add the song identity to `sites/voice/dist/assets/songs.json` so it appears
-     in the Song Lab picker.
-5. Open `#karaoke/<song-id>` locally. Review the full contour plus difficult
-   runs, sustained notes, silence, loudness, vibrato, cue timing, section
-   seeking, playback speed, looping, and browser-local instrumental restore.
-6. Run:
+     `sourceUrl`, `frameRate`, `pitch`, and `cues` (plus optional `lyrics`:
+     `"lyrics.lrc"` and `coachNote`).
+   - Base the 8–12 coach cues in `sites/voice/dist/assets/<song-id>/cues.json`
+     (`start`, `end`, `fragment`, `title`, and `text`) on the generated
+     `workspace/karaoke/<song-id>/coach-analysis.json` rankings for `range`,
+     `highNote`, `vibrato`, `agility`, `sustain`, and `dynamics`.
+4. Open `#karaoke/<song-id>` locally. Review the full contour plus difficult
+   runs, sustained notes, silence, loudness, vibrato, cue timing, synced
+   lyrics, section cycle-looping, and local reference playback.
+5. Run:
 
 ```bash
 .venv/bin/python -m unittest discover -s tests -v
