@@ -1,0 +1,88 @@
+{
+  "cues": [
+    {
+      "start": 18.25,
+      "end": 24.8,
+      "fragment": "Through drought and famine, natural disasters",
+      "title": "Warm Chest-Voice Entry",
+      "text": "Start in a relaxed, conversational chest register (around F#3–A3); lean behind the bass beat with zero throat squeeze."
+    },
+    {
+      "start": 31.35,
+      "end": 37.9,
+      "fragment": "Kingdoms have fallen, angels be calling",
+      "title": "Legato Sustain & Internal Rhymes",
+      "text": "Connect 'fallen' and 'calling' with 89% vowel sustain, keeping the jaw loose as the phrase settles into the low cadence."
+    },
+    {
+      "start": 45.9,
+      "end": 53.8,
+      "fragment": "Every time I look into your eyes I see it",
+      "title": "Pre-Chorus Lift to E4",
+      "text": "Span 11 semitones cleanly up to E4 with natural vibrato (31%); let the vowel narrow slightly as the pitch rises."
+    },
+    {
+      "start": 58.87,
+      "end": 65.8,
+      "fragment": "Every time I get a bit inside I feel it",
+      "title": "Agile Melodic Turn",
+      "text": "Highest agility line in Verse 1: articulate each descending step on 'inside I feel it' distinctly before the chorus."
+    },
+    {
+      "start": 68.61,
+      "end": 78.5,
+      "fragment": "Oooooooh, who would've thought I'd get you",
+      "title": "Signature Falsetto Float (A4)",
+      "text": "Release into a pure, airy head-voice 'Oooooooh' up near A4 (90% sustain), then drop smoothly back into chest mix on 'get you'."
+    },
+    {
+      "start": 102.41,
+      "end": 108.5,
+      "fragment": "Your cries they can be heard from far and wide",
+      "title": "Open Resonance on 'Far and Wide'",
+      "text": "Keep a tall, vertical 'ah' vowel on 'far and wide' so the upper-chest extension rings out without pushing volume."
+    },
+    {
+      "start": 131.99,
+      "end": 136.5,
+      "fragment": "You're all I need",
+      "title": "93% Sustain Anchor",
+      "text": "Hold 'need' steady on a clean, straight-to-vibrato tone before resetting your breath for the second pre-chorus."
+    },
+    {
+      "start": 146.69,
+      "end": 155.5,
+      "fragment": "Oooooooh, who would've thought I'd get you (Chorus 2)",
+      "title": "Longest Sustained Falsetto (95%)",
+      "text": "Meter your airflow with steady rib expansion so the high A4 'Oooooooh' floats effortlessly through the full bar."
+    },
+    {
+      "start": 191.9,
+      "end": 198.0,
+      "fragment": "The memories, It's all just memories",
+      "title": "19-Semitone Bridge Sweep & Vibrato",
+      "text": "Rich vibrato peak (36%): let the melody cascade across 19 semitones on 'memories' while keeping the larynx neutral."
+    },
+    {
+      "start": 202.22,
+      "end": 205.3,
+      "fragment": "Don't you love when I come around",
+      "title": "Rhythmic Call-and-Response Pocket",
+      "text": "Use crisp forward consonants ('d', 'l', 'c') to lock the syncopated bridge groove right into the pocket."
+    },
+    {
+      "start": 224.87,
+      "end": 233.8,
+      "fragment": "Oooooooh, who would've thought I'd get you (Chorus 3)",
+      "title": "Dynamic Climax into Final Chorus",
+      "text": "Strongest vocal presence of the track (82% strength): transition seamlessly from the bridge build into the soaring A4 hook."
+    },
+    {
+      "start": 264.75,
+      "end": 272.2,
+      "fragment": "Just be my lover / Boy you'll lead me to paradise",
+      "title": "Kali Uchis Outro Float",
+      "text": "Widest interval span (20 semitones) with a light, breathy timbre; taper the final 'paradise' gently into silence."
+    }
+  ]
+}

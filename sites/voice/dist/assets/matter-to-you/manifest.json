@@ -1,0 +1,25 @@
+{
+  "id": "matter-to-you",
+  "title": "Matter to You",
+  "artist": "RINI",
+  "duration": 242.233,
+  "sourceUrl": "https://www.youtube.com/watch?v=CI_kSi3ccLM",
+  "youtubeVideoId": "CI_kSi3ccLM",
+  "localReferencePath": "/workspace/downloads/Matter_To_You.mp3",
+  "pitch": "pitch.json",
+  "cues": "cues.json",
+  "lyrics": "lyrics.lrc",
+  "frameRate": 100,
+  "alignmentOffset": 0.023021,
+  "pitchRange": {"minimumMidi": 46, "maximumMidi": 80},
+  "sections": {
+    "full": {"label": "Full song", "start": 0.0, "end": 242.233},
+    "intro": {"label": "Intro", "start": 0.0, "end": 22.8},
+    "verse1": {"label": "Verse 1", "start": 22.8, "end": 69.5},
+    "chorus1": {"label": "Chorus 1", "start": 69.5, "end": 108.5},
+    "verse2": {"label": "Verse 2", "start": 108.5, "end": 139.8},
+    "bridge": {"label": "Bridge", "start": 139.8, "end": 165.8},
+    "chorus2": {"label": "Chorus 2", "start": 165.8, "end": 191.5},
+    "outro": {"label": "Outro", "start": 191.5, "end": 242.233}
+  }
+}

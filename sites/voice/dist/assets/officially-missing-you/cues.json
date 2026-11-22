@@ -1,0 +1,81 @@
+{
+  "cues": [
+    {
+      "start": 4.7,
+      "end": 12.8,
+      "fragment": "Ooh... (Acoustic Guitar Intro)",
+      "title": "Groove & Breath Setup",
+      "text": "Lock in the acoustic guitar slap-groove first and let your shoulders drop before the first conversational verse line."
+    },
+    {
+      "start": 12.85,
+      "end": 30.8,
+      "fragment": "All I hear is raindrops, falling on the rooftop",
+      "title": "Intimate Speech-Level Entry",
+      "text": "Keep the opening phrases light and speech-like over the guitar rhythm; avoid pushing volume in the lower register."
+    },
+    {
+      "start": 31.5,
+      "end": 42.8,
+      "fragment": "Cause this pain I feel... officially missing you",
+      "title": "Clean Title Cadence",
+      "text": "Articulate each syllable of 'officially missing you' cleanly and let the final 'you' settle with gentle vibrato."
+    },
+    {
+      "start": 50.3,
+      "end": 64.2,
+      "fragment": "But I fronted long enough to know...",
+      "title": "Pre-Chorus Lift",
+      "text": "Use forward diction (lips, teeth, tip of the tongue) to carry the line up to C4 without tensing your jaw."
+    },
+    {
+      "start": 64.5,
+      "end": 84.0,
+      "fragment": "Ooh, can't nobody do it like you",
+      "title": "Chorus 1 Pocket & Sustain",
+      "text": "Hold the opening 'Ooh' steady (91% sustain), then keep 'every little thing you do' bouncy and right in the pocket."
+    },
+    {
+      "start": 84.8,
+      "end": 106.8,
+      "fragment": "All I do is lay around, two years full of tears",
+      "title": "Verse 2 Melodic Variations",
+      "text": "Notice the higher melodic turns in Verse 2; separate each step of the riff cleanly rather than smearing between notes."
+    },
+    {
+      "start": 106.8,
+      "end": 129.0,
+      "fragment": "Well, I wish that you would call me right now",
+      "title": "Upper-Mix Build",
+      "text": "Trace the upward contour with your hand as the verse climbs toward B4 so the top notes stay free and supported."
+    },
+    {
+      "start": 131.0,
+      "end": 149.0,
+      "fragment": "Ooh, can't nobody do it like you (Chorus 2)",
+      "title": "Agile Chorus Embellishments",
+      "text": "Chorus 2 expands across 18 semitones; practice the 'officially' melisma slowly on 'mah' or 'mee' first for note separation."
+    },
+    {
+      "start": 149.5,
+      "end": 176.5,
+      "fragment": "Well, I thought I could just get over you, baby",
+      "title": "Bridge Dynamic Peak",
+      "text": "Strongest chest-mix presence in the song: lean into 'the way you would hold me / sweet things you told me' with steady belly support."
+    },
+    {
+      "start": 177.0,
+      "end": 196.8,
+      "fragment": "Can't nobody do it like you... officially missing you",
+      "title": "Chorus 3 Climax & 21-Semitone Run",
+      "text": "Widest range passage (up to C5): keep the throat open and let each descending R&B run note land distinctly."
+    },
+    {
+      "start": 197.0,
+      "end": 225.0,
+      "fragment": "It's official... all I hear is raindrops",
+      "title": "Outro Ad-Libs & Soft Landing",
+      "text": "Taper back down to the intimate opening tone as the guitar fades out."
+    }
+  ]
+}

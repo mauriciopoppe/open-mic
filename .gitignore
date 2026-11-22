@@ -2,8 +2,14 @@
 *.mp4
 *.srt
 separated/
-sites/
 workspace/
+sites/**/*.aac
+sites/**/*.flac
+sites/**/*.m4a
+sites/**/*.ogg
+sites/**/*.opus
+sites/**/*.wav
+sites/**/*.webm
 :memory:.ses
 .DS_Store
 MY_LIST.md
@@ -23,7 +29,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+/dist/
 downloads/
 eggs/
 .eggs/
@@ -134,6 +140,11 @@ celerybeat.pid
 
 # Environments
 .env
+.env.*
+.dev.vars
+.dev.vars.*
+.wrangler/
+node_modules/
 .venv
 env/
 venv/

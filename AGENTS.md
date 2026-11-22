@@ -199,26 +199,92 @@ open-mic karaoke validate-site --site-dir sites/voice/dist
 Do not deploy unless the user explicitly asks. The validator must report no
 published audio and valid Song Lab manifests before publication.
 
-## Nested site repositories
+## Practice & Song Lab Sites (`sites/guitar/` and `sites/voice/`)
 
-`sites/voice/` and `sites/guitar/` are independent Git
-repositories. Run Git status, commits, and history commands from inside the
-relevant site directory. Do not stage `sites/` from the parent `open-mic`
-repository: without configured remotes that would create unportable embedded
-Git links rather than versioning the site contents. The compatibility symlink
-at `workspace/sites/voice` is ignored and exists only for older localhost URLs.
+`sites/guitar/` and `sites/voice/` are tracked directly in the main `open-mic`
+Git repository. The compatibility symlink at `workspace/sites/voice` remains
+ignored and exists only for older localhost URLs.
 
-OpenAI Sites created and uses each nested `.git/` repository as that Site's
-source history. Never delete, flatten, relocate, or replace those `.git/`
-directories when reorganizing the parent repository. Sites publication commits
-and pushes from inside the selected nested repository using temporary source
-credentials supplied by the Sites workflow.
+### Frontend Architecture (`sites/guitar/dist/` and `sites/voice/dist/`)
 
-Keep each site's `.openai/hosting.json` tracked in its own nested repository.
-It contains stable, non-secret deployment configuration: the OpenAI Sites
-`project_id` and the static output directory (currently `dist`). Preserve its
-existing `project_id` when editing or publishing an existing Site. Never copy
-hosting manifests between sites, and never put temporary write credentials,
-tokens, or runtime secrets in them.
+Both sites use a zero-bundler ES module setup rendered declaratively with
+`htm/preact` (`https://cdn.jsdelivr.net/npm/htm@3.1.1/preact/standalone.mjs`):
+
+- **No build step or vendoring**: Source files live directly under `dist/`. Each
+  `dist/index.html` is a minimal semantic shell (`<main class="shell" id="app"></main>`)
+  that loads `./css/styles.css`, declares a `<script type="importmap">` (with an
+  `integrity` map and matching `<link rel="modulepreload" ... crossorigin="anonymous" referrerpolicy="no-referrer">`),
+  and boots `<script type="module" src="./js/app.js"></script>`.
+- **Syntax & site checks**: Validate JS syntax with `node --check` on modified
+  modules, and run `open-mic karaoke validate-site --site-dir sites/voice/dist`
+  whenever editing `sites/voice/dist/`.
+
+#### Guitar Practice Room (`sites/guitar/dist/`)
+
+- `index.html` & `css/styles.css`: App shell and standalone stylesheet.
+- `js/curriculum-data.js`: Pure 5-phase / 17-lesson curriculum (`1.1`–`5.1`),
+  tuning, and quiz question-bank data.
+- `js/audio.js`: Web Audio acoustic guitar sample loader, Karplus-Strong synth
+  fallback, and metronome click.
+- `js/app.js`: Declarative `htm/preact` UI (`Topbar`, `Hero`, `Fretboard`,
+  `LessonPractice`, `Curriculum`, `LessonDoc`, `App`), `#lesson-<id>` hash
+  routing, explicit Lesson practice disclosure + start/stop controls (never
+  auto-enable practice on load or lesson switch), Curriculum expand/collapse, and
+  `localStorage` persistence (`guitar-room-complete` normalized
+  `{ [lessonId]: boolean }` map and `guitar-room-hide-circles`).
+
+#### Voice Practice Room & Song Lab (`sites/voice/dist/`)
+
+- `index.html` & `css/styles.css`: App shell and standalone stylesheet.
+- `js/practice-data.js`: Pure data and scale-plan helpers for the pre-vocal
+  routine, all 7 workout lanes (`coach`, `daily`, `highNotes`, `vibrato`,
+  `agility`, `riffsRuns`, `falsetto`), exercises, sessions, and teacher cues.
+- `js/piano-audio.js`: Web Audio Salamander Grand Piano sampler, stereo room
+  impulse convolver, additive synth fallback, and metronome click.
+- `js/practice-room.js`: Declarative `htm/preact` `<PracticeRoom />` UI with
+  `localStorage` persistence (`voice_preroutine_collapsed`,
+  `voice_piano_scale_shifts`, `voice_piano_bpms`, `voice_piano_metronome`) and a
+  `useRef`-driven 60fps `#timeSlider` / `#timeCurrent` loop while playing.
+- `js/song-lab.js`: Declarative `htm/preact` `<SongLab />` UI (`assets/songs.json`
+  and `assets/<song-id>/`) paired with imperative `useRef` boundaries for the
+  10-second offscreen-tiled `<canvas id="pitchCanvas">` contour renderer,
+  demand-driven 60fps playhead/readout updates (running only during active
+  playback, coalesced on-demand when paused/scrubbing, and suspended on
+  `#practice`), YouTube IFrame API host, and localhost `<audio>` + single
+  `MediaElementAudioSourceNode` clock.
+- `js/app.js`: Top-level `<App />` and `#practice` / `#karaoke/<song-id>` hash
+  router keeping both route sections mounted in the DOM and toggled via `hidden`
+  so YouTube and Web Audio media elements are not destroyed across route changes.
+
+#### Local Preview
+
+Serve from the repository root when previewing locally so `/sites/guitar/dist/`
+and `/sites/voice/dist/` both work and Song Lab's `localReferencePath` URLs
+under `/workspace/...` resolve on localhost:
+
+```bash
+.venv/bin/python3 -m http.server --bind 127.0.0.1
+# Guitar: http://127.0.0.1:8000/sites/guitar/dist/#lesson-1.1
+# Voice:  http://127.0.0.1:8000/sites/voice/dist/#practice
+#         http://127.0.0.1:8000/sites/voice/dist/#karaoke/japanese-denim
+```
+
+#### Cloudflare Workers Static Assets Deployment
+
+Each site includes a `wrangler.jsonc` (`guitar` ->
+`guitar.apps.mauriciopoppe.com` in `sites/guitar/wrangler.jsonc`, and `voice` ->
+`voice.apps.mauriciopoppe.com` in `sites/voice/wrangler.jsonc`) configured to
+serve `./dist` via Cloudflare Workers Static Assets (no Worker JS entrypoint, so
+static asset traffic is unmetered).
+
+Authenticate once with `npx --yes wrangler@latest login`, validate before
+publishing, and deploy from the repository root only when explicitly requested:
+
+```bash
+open-mic karaoke validate-site --site-dir sites/voice/dist
+npx --yes wrangler@latest deploy --cwd sites/guitar
+npx --yes wrangler@latest deploy --cwd sites/voice
+```
+
 
 

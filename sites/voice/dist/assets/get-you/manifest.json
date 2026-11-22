@@ -1,0 +1,69 @@
+{
+  "id": "get-you",
+  "title": "Get You",
+  "artist": "Daniel Caesar",
+  "duration": 278.23,
+  "sourceUrl": "https://www.youtube.com/watch?v=xyUQKDE57Ag",
+  "youtubeVideoId": "xyUQKDE57Ag",
+  "localReferencePath": "/workspace/downloads/Get_You__feat._Kali_Uchis.mp3",
+  "pitch": "pitch.json",
+  "cues": "cues.json",
+  "lyrics": "lyrics.lrc",
+  "frameRate": 100,
+  "alignmentOffset": 0.0,
+  "pitchRange": {
+    "minimumMidi": 40,
+    "maximumMidi": 74
+  },
+  "coachNote": {
+    "title": "From your voice teacher",
+    "text": "“Focus on smooth chest-to-falsetto transitions on the ‘Oooooooh’ chorus hooks (floating up to A4 without neck tension) and laid-back pocket phrasing behind the bass groove in the verses.”"
+  },
+  "sections": {
+    "full": {
+      "label": "Full song",
+      "start": 0.0,
+      "end": 278.23
+    },
+    "intro": {
+      "label": "Intro",
+      "start": 0.0,
+      "end": 18.2
+    },
+    "verse1": {
+      "label": "Verse 1",
+      "start": 18.2,
+      "end": 68.6
+    },
+    "chorus1": {
+      "label": "Chorus 1",
+      "start": 68.6,
+      "end": 96.2
+    },
+    "verse2": {
+      "label": "Verse 2",
+      "start": 96.2,
+      "end": 146.6
+    },
+    "chorus2": {
+      "label": "Chorus 2",
+      "start": 146.6,
+      "end": 174.1
+    },
+    "bridge": {
+      "label": "Bridge",
+      "start": 174.1,
+      "end": 224.8
+    },
+    "chorus3": {
+      "label": "Chorus 3",
+      "start": 224.8,
+      "end": 252.0
+    },
+    "outro": {
+      "label": "Outro",
+      "start": 252.0,
+      "end": 278.23
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "cues": [
+    {"start": 27.5, "end": 31.6, "fragment": "opening verse", "title": "Float the first entrance", "text": "Begin with a clean, speech-sized onset. Keep the breath moving through the line instead of adding weight to announce the first note."},
+    {"start": 31.64, "end": 38.8, "fragment": "dusk till dawn", "title": "Keep the wide phrase in one shape", "text": "This phrase spans almost an octave. Let vowels stay narrow and connected so each pitch change comes from the melody, not a new jaw position."},
+    {"start": 47.13, "end": 52.15, "fragment": "callin’ me", "title": "Let vibrato arrive after the pitch", "text": "Land the center first, then release the sustained tone. The recording adds vibrato generously here; avoid manufacturing it with jaw movement."},
+    {"start": 52.77, "end": 55.83, "fragment": "ain’t no sunshine", "title": "Sustain without pressing", "text": "The contour becomes very stable here. Use steady ribs and a small vowel so the held line stays even while intensity grows."},
+    {"start": 86.58, "end": 89.86, "fragment": "take over", "title": "Turn the run as one gesture", "text": "This compact phrase moves through a wide range quickly. Practice it on one neutral vowel, then restore the words without punching each note."},
+    {"start": 128.83, "end": 130.85, "fragment": "when she smiles", "title": "Prepare the octave-sized turn", "text": "Largest measured pitch span in the song occurs here. Hear the destination before starting and keep the lower note light so the upper pitch does not need a push."},
+    {"start": 131.55, "end": 133.69, "fragment": "my knees go weak", "title": "Separate agility from vibrato", "text": "Fast pitch changes and vibrato overlap here. First sing the note sequence straight and rhythmically; add the released tail only after the run is accurate."},
+    {"start": 161.21, "end": 164.95, "fragment": "come closer", "title": "Aim high notes forward", "text": "This entrance reaches one of the song’s highest areas. Keep consonants quick, maintain a tall inner vowel, and resist lifting the chin."},
+    {"start": 189.51, "end": 192.79, "fragment": "next time", "title": "Spend intensity, not extra air", "text": "These are among the strongest and most sustained moments. Increase resonance and intention while keeping airflow economical so the phrase remains controlled."},
+    {"start": 198.96, "end": 212.74, "fragment": "meet me in Amsterdam", "title": "Shape the long release", "text": "The final extended phrase stays high and uses recurring vibrato. Plan one dynamic arc: arrive, bloom, then taper without letting pitch collapse as volume fades."}
+  ]
+}

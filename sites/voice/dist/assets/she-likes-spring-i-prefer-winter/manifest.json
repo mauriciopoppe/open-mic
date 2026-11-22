@@ -1,0 +1,33 @@
+{
+  "id": "she-likes-spring-i-prefer-winter",
+  "title": "she likes spring, I prefer winter",
+  "artist": "slchld",
+  "duration": 207.464,
+  "sourceUrl": "https://www.youtube.com/watch?v=-F1G2vgta6o",
+  "youtubeVideoId": "-F1G2vgta6o",
+  "localReferencePath": "/workspace/downloads/slchld_-_she_likes_spring__I_prefer_winter__Official_Audio.mp3",
+  "pitch": "pitch.json",
+  "cues": "cues.json",
+  "lyrics": "lyrics.lrc",
+  "frameRate": 100,
+  "alignmentOffset": 0.0,
+  "pitchRange": {
+    "minimumMidi": 45,
+    "maximumMidi": 72
+  },
+  "coachNote": {
+    "title": "From your voice teacher",
+    "text": "slchld keeps the verses conversational and warm around A3–E4, then floats effortless head-voice turns on 'marigold', 'lily from the valley', and the 'Happy too' peak (B4). Keep jaw tension at zero so those upper flips bloom without pressing."
+  },
+  "sections": {
+    "full": { "label": "Full song", "start": 0.0, "end": 207.464 },
+    "intro": { "label": "Intro", "start": 0.0, "end": 11.0 },
+    "verse1": { "label": "Verse 1", "start": 11.0, "end": 47.9 },
+    "prechorus": { "label": "Pre-Chorus", "start": 47.9, "end": 75.0 },
+    "bridge": { "label": "Refrain", "start": 75.0, "end": 95.0 },
+    "chorus1": { "label": "Chorus 1", "start": 95.0, "end": 120.0 },
+    "verse2": { "label": "Verse 2", "start": 120.0, "end": 155.5 },
+    "chorus2": { "label": "Chorus 2", "start": 155.5, "end": 178.5 },
+    "outro": { "label": "Outro Chorus", "start": 178.5, "end": 207.464 }
+  }
+}

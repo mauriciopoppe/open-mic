@@ -1,0 +1,31 @@
+{
+  "id": "meet-me-in-amsterdam",
+  "title": "Meet Me in Amsterdam",
+  "artist": "RINI",
+  "duration": 301.453,
+  "sourceUrl": "https://www.youtube.com/watch?v=y2hlRe6IcVY",
+  "youtubeVideoId": "y2hlRe6IcVY",
+  "localReferencePath": "/workspace/downloads/RINI_-_Meet_Me_in_Amsterdam__Audio.mp3",
+  "pitch": "pitch.json",
+  "cues": "cues.json",
+  "lyrics": "lyrics.lrc",
+  "frameRate": 100,
+  "alignmentOffset": 0.023021,
+  "pitchRange": {"minimumMidi": 42, "maximumMidi": 76},
+  "coachNote": {
+    "title": "From your voice teacher · guitar & vocal",
+    "text": "“When you accompany yourself without a full band or piano stem, your guitar has to set the rhythm and fill the pocket first—then combine your vocal on top of that groove while letting your body move with the beat.”"
+  },
+  "sections": {
+    "full": {"label": "Full song", "start": 0.0, "end": 301.453},
+    "intro": {"label": "Intro", "start": 0.0, "end": 27.3},
+    "verse1": {"label": "Verse 1", "start": 27.3, "end": 52.7},
+    "preChorus1": {"label": "Pre-Chorus 1", "start": 52.7, "end": 80.2},
+    "chorus1": {"label": "Chorus 1", "start": 80.2, "end": 108.7},
+    "verse2": {"label": "Verse 2", "start": 108.7, "end": 134.0},
+    "preChorus2": {"label": "Pre-Chorus 2", "start": 134.0, "end": 161.2},
+    "chorus2": {"label": "Chorus 2", "start": 161.2, "end": 188.6},
+    "refrain": {"label": "Refrain", "start": 188.6, "end": 215.0},
+    "outro": {"label": "Outro", "start": 215.0, "end": 301.453}
+  }
+}

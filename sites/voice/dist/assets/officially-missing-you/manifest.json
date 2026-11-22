@@ -1,0 +1,69 @@
+{
+  "id": "officially-missing-you",
+  "title": "Officially Missing You",
+  "artist": "Tamia",
+  "duration": 243.12,
+  "sourceUrl": "https://www.youtube.com/watch?v=C8hkCIs0CB0",
+  "youtubeVideoId": "C8hkCIs0CB0",
+  "localReferencePath": "/workspace/downloads/Officially_Missing_You__Radio_Version.mp3",
+  "pitch": "pitch.json",
+  "cues": "cues.json",
+  "lyrics": "lyrics.lrc",
+  "frameRate": 100,
+  "alignmentOffset": 0.0,
+  "pitchRange": {
+    "minimumMidi": 44,
+    "maximumMidi": 76
+  },
+  "coachNote": {
+    "title": "From your voice teacher",
+    "text": "“Teacher assignment: Practice syncing the acoustic guitar slap-groove with a relaxed, conversational vocal entry, and keep each step in the R&B runs discrete (like clean pronunciation on ‘mah/mee’) rather than sliding.”"
+  },
+  "sections": {
+    "full": {
+      "label": "Full song",
+      "start": 0.0,
+      "end": 243.12
+    },
+    "intro": {
+      "label": "Intro",
+      "start": 0.0,
+      "end": 12.8
+    },
+    "verse1": {
+      "label": "Verse 1",
+      "start": 12.8,
+      "end": 64.5
+    },
+    "chorus1": {
+      "label": "Chorus 1",
+      "start": 64.5,
+      "end": 84.5
+    },
+    "verse2": {
+      "label": "Verse 2",
+      "start": 84.5,
+      "end": 131.0
+    },
+    "chorus2": {
+      "label": "Chorus 2",
+      "start": 131.0,
+      "end": 149.2
+    },
+    "bridge": {
+      "label": "Bridge",
+      "start": 149.2,
+      "end": 176.5
+    },
+    "chorus3": {
+      "label": "Chorus 3",
+      "start": 176.5,
+      "end": 197.0
+    },
+    "outro": {
+      "label": "Outro",
+      "start": 197.0,
+      "end": 243.12
+    }
+  }
+}

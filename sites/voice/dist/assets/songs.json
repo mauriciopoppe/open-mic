@@ -1,0 +1,34 @@
+{
+  "songs": [
+    {
+      "id": "japanese-denim",
+      "title": "Japanese Denim",
+      "artist": "Daniel Caesar"
+    },
+    {
+      "id": "meet-me-in-amsterdam",
+      "title": "Meet Me in Amsterdam",
+      "artist": "RINI"
+    },
+    {
+      "id": "matter-to-you",
+      "title": "Matter to You",
+      "artist": "RINI"
+    },
+    {
+      "id": "officially-missing-you",
+      "title": "Officially Missing You",
+      "artist": "Tamia"
+    },
+    {
+      "id": "get-you",
+      "title": "Get You",
+      "artist": "Daniel Caesar"
+    },
+    {
+      "id": "she-likes-spring-i-prefer-winter",
+      "title": "she likes spring, I prefer winter",
+      "artist": "slchld"
+    }
+  ]
+}

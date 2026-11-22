@@ -1,0 +1,74 @@
+{
+  "cues": [
+    {
+      "start": 11.06,
+      "end": 13.5,
+      "fragment": "Stay by the fire",
+      "title": "Warm conversational onset",
+      "text": "Enter at speaking weight right around C4. Keep the throat open and let the breath move gently through 'fire' without glottal attack."
+    },
+    {
+      "start": 22.95,
+      "end": 28.0,
+      "fragment": "I don't want to wait, she saw the flowers blooming up",
+      "title": "Connect the 9.7-semitone lift",
+      "text": "As the line climbs to E4 on 'blooming up', keep your vowel narrow so the upper chest-mix stays buoyant rather than heavy."
+    },
+    {
+      "start": 28.72,
+      "end": 35.2,
+      "fragment": "Telling me how winter sucks for you",
+      "title": "Sustain & release into vibrato",
+      "text": "Highest sustain passage in Verse 1 (89% voiced continuity, 53% vibrato on 'what more that I can do'). Hold steady rib support and let vibrato shimmer at the end."
+    },
+    {
+      "start": 40.9,
+      "end": 47.9,
+      "fragment": "We've worked so hard to be where we be",
+      "title": "Float the F4 turn cleanly",
+      "text": "Spans 9.5 semitones up to F4 before settling back into chest on 'right now'. Lighten the vocal fold mass before the top note."
+    },
+    {
+      "start": 54.94,
+      "end": 60.95,
+      "fragment": "I prefer marigold",
+      "title": "Flip effortlessly into head-mix on 'lily'",
+      "text": "Spans 11.2 semitones up to G#4 (MIDI 67.8) on 'lily from the valley'. Let the larynx stay neutral as you release into head voice."
+    },
+    {
+      "start": 66.83,
+      "end": 73.1,
+      "fragment": "I prefer marigold",
+      "title": "Second marigold variation (A4 peak)",
+      "text": "The second repeat reaches A4 (MIDI 69.0) with fast R&B agility. Aim the vowel forward behind the upper teeth rather than pushing air."
+    },
+    {
+      "start": 95.15,
+      "end": 106.5,
+      "fragment": "Girl give it up, give it up, give it up, give it up, this year",
+      "title": "Rhythmic bounce & legato release",
+      "text": "Keep the repeated 'give it up' phrases light and percussive from the diaphragm, then let 'don't let it hurt' settle into warm vibrato (59% vibrato ratio)."
+    },
+    {
+      "start": 120.18,
+      "end": 128.6,
+      "fragment": "Jasmine, marigold, winter, sol yeah",
+      "title": "Articulate rapid floral phrasing",
+      "text": "Keep tongue and lip diction crisp on the syncopated sixteenth-note syllables while maintaining a steady low-chest anchor."
+    },
+    {
+      "start": 132.74,
+      "end": 141.6,
+      "fragment": "If that makes you happy then I'll be",
+      "title": "Crest the B4 head-voice peak ('Happy too')",
+      "text": "Song's widest leap (12.9 semitones) and highest note (B4, MIDI 71.8) on 'Happy too'. Release completely into pure, weightless head voice."
+    },
+    {
+      "start": 178.66,
+      "end": 202.0,
+      "fragment": "Girl give it up, give it up, give it up, give it up, this year",
+      "title": "Ride the final chorus home",
+      "text": "Keep energy buoyant through the final 'keep you warm till spring comes' (10.4-semitone range) and taper the closing note with relaxed breath."
+    }
+  ]
+}
