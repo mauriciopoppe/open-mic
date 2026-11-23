@@ -1,0 +1,88 @@
+{
+  "cues": [
+    {
+      "start": 0.14,
+      "end": 19.5,
+      "fragment": "Ooh, ooh / Not spinnin' anymore, you won't see me wasted",
+      "title": "Atmospheric Head-Voice Intro",
+      "text": "Open with a soft, airy head-voice 'Ooh' (up to F4) before settling into relaxed, conversational phrasing on 'Not spinnin' anymore'; keep dynamics light (35% strength) and steady (88% sustain)."
+    },
+    {
+      "start": 22.07,
+      "end": 31.2,
+      "fragment": "Smoking in the park, underneath the trees / Perfect time for me",
+      "title": "Smooth Groove & Lift to Bb4",
+      "text": "Lock into the laid-back R&B pocket around F3–G4, then release cleanly into head mix on 'Perfect time for me' (10-semitone span up to Bb4) without throat squeeze."
+    },
+    {
+      "start": 35.06,
+      "end": 44.7,
+      "fragment": "Underneath the stars, feels just like a dream / A dream, a dream, a dream",
+      "title": "Wide 19-Semitone Sweep & Agile Echoes",
+      "text": "Second-widest pitch sweep of the track (19 semitones on 'Underneath the stars'), followed by light, nimble runs on the repeating 'a dream, a dream, a dream' hook."
+    },
+    {
+      "start": 54.72,
+      "end": 61.7,
+      "fragment": "I'll take you wherever you wanna go / Come find me, I can be your therapist",
+      "title": "Warm Vibrato Pocket (53%)",
+      "text": "Float up to Bb4 on 'wherever you wanna go', then drop into warm, resonant chest voice around D4 with rich vibrato (53%) on 'Come find me, I can be your therapist'."
+    },
+    {
+      "start": 64.17,
+      "end": 70.0,
+      "fragment": "All the weight on your heart, you can lay it on my shoulders",
+      "title": "Peak Sustain (98%) & Dynamic Anchor",
+      "text": "Highest sustain (98%) and co-strongest dynamic presence (75% strength) in the song: hold 'shoulders' with steady rib support and warm 61% vibrato up to G4."
+    },
+    {
+      "start": 77.58,
+      "end": 88.8,
+      "fragment": "We can't see the haters, we're too high out here / pull up on me later at the spot",
+      "title": "Building Mix & Dynamic Lift",
+      "text": "Connect 'we're too high out here' with 89% sustain around A4, then drive forward with 75% vocal strength across an 11-semitone arc into 'at the spot' before Chorus 2."
+    },
+    {
+      "start": 89.93,
+      "end": 96.3,
+      "fragment": "Smoke one in the park, underneath the trees",
+      "title": "Widest Range Span (24 Semitones)",
+      "text": "Largest pitch span (24 semitones) and second-highest agility in the track: navigate the low pickup into the G4 chorus hook cleanly, keeping the larynx neutral."
+    },
+    {
+      "start": 104.36,
+      "end": 112.8,
+      "fragment": "Underneath the stars, feels just like a dream / A dream, a dream, a dream",
+      "title": "Vibrato Bloom & 92% Legato Sustain",
+      "text": "Let natural vibrato bloom (51%) on 'Underneath the stars', then spin a seamless 92% sustained line through 'feels just like a dream' without breaking airflow."
+    },
+    {
+      "start": 132.5,
+      "end": 145.5,
+      "fragment": "Ooh, ooh-ooh / Oh-whoa, ooh-whoa, oh",
+      "title": "Soaring Falsetto Bridge (C5–D5)",
+      "text": "After the instrumental break, float effortlessly into pure head voice soaring to C5 and D5; keep vowels tall and narrow with zero neck tension."
+    },
+    {
+      "start": 150.94,
+      "end": 157.0,
+      "fragment": "And if you're free, you can pull up on me later at the spot",
+      "title": "Controlled 93% Sustain into Final Hook",
+      "text": "Span 11 semitones cleanly up to A4, then anchor 'at the spot' with 93% sustain and 41% vibrato to set up the climactic final chorus."
+    },
+    {
+      "start": 161.34,
+      "end": 170.6,
+      "fragment": "Underneath the trees / Perfect time for me to set you free",
+      "title": "C5 Climax & Peak Vibrato (64%)",
+      "text": "Push into radiant C5 ad-libs on 'Underneath the trees' and 'Perfect time for me', then unleash the song's richest vibrato (64%) and 91% sustain on 'to set you free'."
+    },
+    {
+      "start": 170.56,
+      "end": 180.8,
+      "fragment": "Feels just like a dream / A dream, a dream, a dream",
+      "title": "Highest Note (C#5) & Peak Agility Run",
+      "text": "Hit the track's highest sustained melodic peak (C#5) on 'Feels just like a dream', then finish with the song's fastest, most agile 15-semitone riff on 'A dream, a dream, a dream'."
+    }
+  ]
+}

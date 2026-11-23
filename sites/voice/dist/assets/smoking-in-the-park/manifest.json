@@ -1,0 +1,74 @@
+{
+  "id": "smoking-in-the-park",
+  "title": "Smoking In The Park (Paradise)",
+  "artist": "Tone Stith",
+  "duration": 193.985,
+  "sourceUrl": "https://www.youtube.com/watch?v=vjvKJ4kXmng",
+  "youtubeVideoId": "vjvKJ4kXmng",
+  "localReferencePath": "/workspace/downloads/Smoking_In_The_Park__Paradise.mp3",
+  "pitch": "pitch.json",
+  "cues": "cues.json",
+  "lyrics": "lyrics.lrc",
+  "frameRate": 100,
+  "alignmentOffset": 0.0,
+  "pitchRange": {
+    "minimumMidi": 42,
+    "maximumMidi": 75
+  },
+  "coachNote": {
+    "title": "From your voice teacher",
+    "text": "“Tone Stith glides between silky chest-mix phrasing in the verses and floating head-voice runs up to C5–C#5 in the bridge and final chorus. Stay loose in the jaw, lean back in the R&B pocket, and let the upper vibrato bloom without pressing.”"
+  },
+  "sections": {
+    "full": {
+      "label": "Full song",
+      "start": 0.0,
+      "end": 193.985
+    },
+    "intro": {
+      "label": "Intro",
+      "start": 0.0,
+      "end": 22.0
+    },
+    "chorus1": {
+      "label": "Chorus 1",
+      "start": 22.0,
+      "end": 51.4
+    },
+    "verse1": {
+      "label": "Verse 1",
+      "start": 51.4,
+      "end": 77.5
+    },
+    "prechorus1": {
+      "label": "Pre-Chorus 1",
+      "start": 77.5,
+      "end": 89.9
+    },
+    "chorus2": {
+      "label": "Chorus 2",
+      "start": 89.9,
+      "end": 120.0
+    },
+    "bridge": {
+      "label": "Bridge",
+      "start": 120.0,
+      "end": 145.8
+    },
+    "prechorus2": {
+      "label": "Pre-Chorus 2",
+      "start": 145.8,
+      "end": 158.0
+    },
+    "chorus3": {
+      "label": "Chorus 3",
+      "start": 158.0,
+      "end": 182.0
+    },
+    "outro": {
+      "label": "Outro",
+      "start": 182.0,
+      "end": 193.985
+    }
+  }
+}
