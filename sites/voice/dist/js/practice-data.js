@@ -47,10 +47,16 @@ export const PRE_ROUTINE_COLUMNS = [
           'Scrunch and frown your face tightly, then expand your face wide with your tongue stretched out.',
       },
       {
-        id: 'sss',
-        title: '4. Belly / diaphragm “sss” pulses',
+        id: 'sssSteady',
+        title: '4. Steady “sss” hiss (15–20 sec)',
         description:
-          'Push a crisp, steady “sss” sound from your diaphragm and lower ribs before singing tone.',
+          'Daily breath drill (2 min total with #5): take a silent 360° 70–80% inhale, then hiss a laser-steady “sss” with zero volume wobble. Keep your lower ribs buoyed outward as long as possible while your deep lower abs draw smoothly inward from below the belly button. At the end, completely release your abs and feel the silent reflex breath drop in.',
+      },
+      {
+        id: 'sssPulsed',
+        title: '5. Pulsed “ss – ss – ss – sssss”',
+        description:
+          'Three crisp, gentle pulses (deep lower abs flexing slightly inward on each pulse, ribs steady, shoulders and throat dead quiet) followed by one smooth 5-second hiss, then an instant silent belly-release catch breath.',
       },
     ],
   },
