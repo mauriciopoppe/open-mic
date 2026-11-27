@@ -13,7 +13,14 @@ from open_mic.karaoke.prepare import bridge_short_gaps, correct_octave_jumps, ex
 from open_mic.karaoke.compare import _rms_strength, disagreement
 from open_mic.karaoke.compare_separators import fuse
 from open_mic.karaoke.coach_analyze import analyze
-from open_mic.karaoke.consensus import bridge_phrase_gaps, merge_pitch_tracks, smooth_strength, vibrato_depth
+from open_mic.karaoke.consensus import (
+    bridge_phrase_gaps,
+    detect_phrase_breaths,
+    extract_vocal_timbre,
+    merge_pitch_tracks,
+    smooth_strength,
+    vibrato_depth,
+)
 from open_mic.karaoke.ingest import compute_pitch_range, extract_youtube_id, update_song_catalog
 from open_mic.karaoke.validate_site import published_audio_files, song_asset_errors
 
@@ -190,6 +197,48 @@ class TrackerComparisonTests(unittest.TestCase):
         source = np.array(["pyin", *(["none"] * 14), "pyin"], dtype=object)
         bridged, _ = bridge_phrase_gaps(midi, source, np.zeros(16), frame_rate=100)
         self.assertTrue(np.isnan(bridged[1:-1]).all())
+
+    def test_vocal_timbre_separates_harmonic_rich_chest_from_pure_head_voice(self):
+        sample_rate = 16000
+        frame_rate = 100
+        t = np.arange(sample_rate) / sample_rate
+        f0_chest = 220.0
+        # Harmonic-rich tone (strong H2, H3, H4 relative to fundamental)
+        chest_audio = (
+            0.25 * np.sin(2 * np.pi * f0_chest * t)
+            + 0.45 * np.sin(2 * np.pi * 2 * f0_chest * t)
+            + 0.35 * np.sin(2 * np.pi * 3 * f0_chest * t)
+            + 0.25 * np.sin(2 * np.pi * 4 * f0_chest * t)
+        )
+        f0_head = 330.0
+        # Fundamental-dominated falsetto/head tone
+        head_audio = (
+            0.70 * np.sin(2 * np.pi * f0_head * t)
+            + 0.06 * np.sin(2 * np.pi * 2 * f0_head * t)
+        )
+        audio = np.concatenate([chest_audio, head_audio])
+        midi = np.r_[np.full(100, 57.0), np.full(100, 64.0)]
+        head_voice, brightness = extract_vocal_timbre(audio, sample_rate, midi, frame_rate)
+        self.assertEqual(len(head_voice), 200)
+        self.assertEqual(len(brightness), 200)
+        self.assertLess(float(np.median(head_voice[15:85])), 0.25)
+        self.assertGreater(float(np.median(head_voice[115:185])), 0.75)
+
+    def test_detect_phrase_breaths_marks_silence_to_phrase_entrances(self):
+        frames = []
+        for idx in range(300):
+            voiced = 100 <= idx < 220
+            frames.append({
+                "time": round(idx / 100, 3),
+                "midi": 62.0 if voiced else None,
+                "voiced": voiced,
+                "strength": 0.65 if voiced else 0.0,
+            })
+        breaths = detect_phrase_breaths(frames, None, None, frame_rate=100)
+        self.assertEqual(len(breaths), 1)
+        self.assertAlmostEqual(breaths[0]["onsetTime"], 1.0, places=2)
+        self.assertLess(breaths[0]["time"], breaths[0]["onsetTime"])
+        self.assertAlmostEqual(breaths[0]["midi"], 62.0, places=1)
 
 
 class KaraokeIngestHelperTests(unittest.TestCase):

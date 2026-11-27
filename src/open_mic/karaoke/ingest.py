@@ -42,6 +42,14 @@ def extract_youtube_id(url: str) -> str:
     return match.group(1) if match else ""
 
 
+def _find_mdx_vocal(mdx_dir: Path) -> list[Path]:
+    return sorted(
+        path
+        for path in mdx_dir.glob("*(Vocals)*.*")
+        if path.suffix.lower() in {".wav", ".flac", ".mp3"}
+    )
+
+
 def ensure_mdx23c_vocal(
     mix_path: Path,
     mdx_dir: Path,
@@ -52,7 +60,7 @@ def ensure_mdx23c_vocal(
 ) -> Path:
     """Return existing MDX23C vocal stem or run audio-separator to create it."""
     mdx_dir.mkdir(parents=True, exist_ok=True)
-    existing = sorted(mdx_dir.glob("*(Vocals)*.wav"))
+    existing = _find_mdx_vocal(mdx_dir)
     if existing:
         return existing[0]
     if not mdx_bin.is_file():
@@ -69,12 +77,14 @@ def ensure_mdx23c_vocal(
         str(mdx_model_dir),
         "--output_dir",
         str(mdx_dir),
+        "--output_format",
+        "WAV",
         "--single_stem",
         "Vocals",
     ])
-    created = sorted(mdx_dir.glob("*(Vocals)*.wav"))
+    created = _find_mdx_vocal(mdx_dir)
     if not created:
-        raise FileNotFoundError(f"MDX23C separation produced no *(Vocals)*.wav file in {mdx_dir}")
+        raise FileNotFoundError(f"MDX23C separation produced no *(Vocals)* audio file in {mdx_dir}")
     return created[0]
 
 
@@ -247,6 +257,7 @@ def main() -> None:
         [
             "open-mic karaoke merge",
             "--comparison", str(comparison_path),
+            "--vocal", str(mdx_vocal),
             "--output", str(pitch_path),
         ],
     )
