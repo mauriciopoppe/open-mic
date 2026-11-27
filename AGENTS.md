@@ -277,7 +277,7 @@ Each site includes a `wrangler.jsonc` (`guitar` ->
 serve `./dist` via Cloudflare Workers Static Assets (no Worker JS entrypoint, so
 static asset traffic is unmetered).
 
-Authenticate once with `npx --yes wrangler@latest login`, validate before
+Authenticate once with `npx --yes wrangler@latest login` (or load `CLOUDFLARE_API_TOKEN` from your private secrets—see below), validate before
 publishing, and deploy from the repository root only when explicitly requested:
 
 ```bash
@@ -286,5 +286,9 @@ npx --yes wrangler@latest deploy --cwd sites/guitar
 npx --yes wrangler@latest deploy --cwd sites/voice
 ```
 
+## Private Context & Secrets
 
+Because this repository is open source, **never** commit Drive IDs, tokens, account IDs, or private folder URLs to tracked files. Keep private deployment instructions and credentials in one of two places:
 
+1. **Local gitignored override (optional)**: `workspace/AGENTS.local.md` or `.env.local` (both `workspace/` and `.env.*` are ignored by Git).
+2. **Private Google Drive `self` folder (for fresh cloud environments)**: If no local secrets exist and the `gdrive` CLI is connected, search Drive for `open-mic-private.md` (in `self/source/agent-context/`) and `personal-sites.env` (in `self/secrets/`). Download secrets only to gitignored `workspace/secrets/` or `/tmp/` at execution time, source them in-shell, and never print or commit their values.
