@@ -1,0 +1,81 @@
+{
+  "cues": [
+    {
+      "start": 23.41,
+      "end": 29.3,
+      "fragment": "The wind flicks your hair back / When it's down",
+      "title": "Intimate Chest Entry & Dynamic Peak",
+      "text": "Strongest vocal presence of the track (85% strength on 'When it's down'): keep the delivery close-mic and velvety across 9 semitones (G3–E4) with steady 85% sustain."
+    },
+    {
+      "start": 31.16,
+      "end": 37.1,
+      "fragment": "As I lay on the ground / The wind slides your hand",
+      "title": "12-Semitone Sweep & Legato Flow",
+      "text": "Hold 'As I lay on the ground' with 91% sustain and warm 34% vibrato, then glide smoothly across a 12-semitone arc through 'The wind slides your hand'."
+    },
+    {
+      "start": 37.98,
+      "end": 45.1,
+      "fragment": "Up your gown / As I lay with no sound",
+      "title": "Agile Low-Register Phrasing",
+      "text": "Second-highest agility passage in the song: articulate the quick vocal turns cleanly on 'As I lay with no sound' while keeping a warm, resonant chest tone (84% strength)."
+    },
+    {
+      "start": 45.87,
+      "end": 51.5,
+      "fragment": "My hands are tied / With you by my side",
+      "title": "Widest 14-Semitone Leap & B4 Sustain",
+      "text": "Widest pitch span in the measured passages (14.4 semitones) jumping up to B4 on 'With you by my side'; maintain 90% sustain and float into head mix without throat tension."
+    },
+    {
+      "start": 52.91,
+      "end": 62.9,
+      "fragment": "Late at night with no one around / You give me joy, make me your toy",
+      "title": "Airy Head-Voice Hook (B4–C5)",
+      "text": "Lean into the dreamy head-voice color (up to 58% head-voice dominance near C5) on 'You give me joy, make me your toy', keeping agile turns crisp and weightless."
+    },
+    {
+      "start": 64.0,
+      "end": 68.5,
+      "fragment": "Go back and forth 'til I'm out",
+      "title": "Title Hook & Vibrato Release",
+      "text": "Phrase 'Go back and forth 'til I'm out' with a resonant B4 peak and blossoming vibrato (44%) before tapering gently into the atmospheric vocal interlude."
+    },
+    {
+      "start": 112.76,
+      "end": 123.1,
+      "fragment": "The way you look at me with those naked eyes / Strips the soul of my life",
+      "title": "Rich Vibrato & Sustained Chest Tone",
+      "text": "Re-enter after the flute interlude with commanding presence (84% strength), letting warm 37% vibrato and 89% sustain carry 'those naked eyes' and 'Strips the soul of my life'."
+    },
+    {
+      "start": 123.6,
+      "end": 130.7,
+      "fragment": "The way you force your way / On my thigh",
+      "title": "Peak Agility Run & G4 Climb",
+      "text": "Highest agility line in the song: navigate the rapid melodic turns cleanly on 'The way you force your way' before opening into a resonant G4 belt on 'On my thigh'."
+    },
+    {
+      "start": 131.32,
+      "end": 145.8,
+      "fragment": "Oh babe, I lose my mind / I'm missing you, the things that we do, under the moon",
+      "title": "Head-Voice Surge & Peak Vibrato (38%)",
+      "text": "Richest vibrato passage (38%) with intense head-voice dominance (up to 94% on 'I'm missing you'): span 12 semitones up to C5 with tall vowels and steady breath support."
+    },
+    {
+      "start": 153.21,
+      "end": 164.7,
+      "fragment": "And babe, I've been wanting you to (ooh)",
+      "title": "C#5 Emotional Belt & Long Melisma",
+      "text": "Drive into a passionate C#5 peak (92% vocal strength) and spin the long descending melisma on steady rib expansion so the tone stays connected through the 11-second phrase."
+    },
+    {
+      "start": 165.1,
+      "end": 176.5,
+      "fragment": "I've been wanting you to (ooh, ooh)",
+      "title": "Soaring E5–G5 Falsetto Climax",
+      "text": "Release all jaw and neck tension to float the song's highest falsetto wails (E5 up to G5), letting the voice bloom into the reverb before fading softly into the outro."
+    }
+  ]
+}

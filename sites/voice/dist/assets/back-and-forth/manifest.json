@@ -1,0 +1,64 @@
+{
+  "id": "back-and-forth",
+  "title": "back & forth",
+  "artist": "Salil Maharjan",
+  "duration": 191.347,
+  "sourceUrl": "https://www.youtube.com/watch?v=gX3awvfsJ5c",
+  "youtubeVideoId": "gX3awvfsJ5c",
+  "localReferencePath": "/workspace/downloads/Salil_Maharjan_-_back___forth.mp3",
+  "pitch": "pitch.json",
+  "cues": "cues.json",
+  "lyrics": "lyrics.lrc",
+  "frameRate": 100,
+  "alignmentOffset": 0.0,
+  "pitchRange": {
+    "minimumMidi": 47,
+    "maximumMidi": 80
+  },
+  "coachNote": {
+    "title": "From your voice teacher",
+    "text": "“Salil Maharjan pairs intimate, velvety chest phrasing in the verses (G3–E4) with expansive head-voice and falsetto peaks soaring up to B4, C#5, and G5 in the chorus and final climax. Keep the jaw completely free and meter your airflow through the long reverbed sustains.”"
+  },
+  "sections": {
+    "full": {
+      "label": "Full song",
+      "start": 0.0,
+      "end": 191.347
+    },
+    "intro": {
+      "label": "Intro",
+      "start": 0.0,
+      "end": 23.0
+    },
+    "verse1": {
+      "label": "Verse 1",
+      "start": 23.0,
+      "end": 45.5
+    },
+    "chorus1": {
+      "label": "Chorus",
+      "start": 45.5,
+      "end": 68.5
+    },
+    "interlude": {
+      "label": "Interlude",
+      "start": 68.5,
+      "end": 112.5
+    },
+    "verse2": {
+      "label": "Verse 2",
+      "start": 112.5,
+      "end": 131.0
+    },
+    "bridge": {
+      "label": "Bridge",
+      "start": 131.0,
+      "end": 152.5
+    },
+    "outro": {
+      "label": "Climax & Outro",
+      "start": 152.5,
+      "end": 191.347
+    }
+  }
+}
